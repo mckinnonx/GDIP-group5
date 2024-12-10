@@ -1,0 +1,68 @@
+﻿<Window x:Class="GDIPFU.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GDIPFU"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap" Text="GDIP Pass Encoding Robot Calibration and Initialisation" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="80,80,0,0" TextWrapping="Wrap" Text="S0 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S0" HorizontalAlignment="Left" Margin="80,100,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="1" Value="90" IsSnapToTickEnabled="True" ValueChanged="S0_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,120,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S0, Path=Value}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="S1 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S1" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="0" Value="90" IsSnapToTickEnabled="True" ValueChanged="S1_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S1, Path=Value}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="540,80,0,0" TextWrapping="Wrap" Text="S2 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S2" HorizontalAlignment="Left" Margin="540,100,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="0" Value="90" IsSnapToTickEnabled="True" ValueChanged="S2_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="540,120,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S2, Path=Value}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="80,180,0,0" TextWrapping="Wrap" Text="S3 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S3" HorizontalAlignment="Left" Margin="80,200,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="0" Value="90" IsSnapToTickEnabled="True" ValueChanged="S3_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,220,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S3, Path=Value}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,180,0,0" TextWrapping="Wrap" Text="S4 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S4" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="0" Value="90" IsSnapToTickEnabled="True" ValueChanged="S4_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,220,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S4, Path=Value}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="540,180,0,0" TextWrapping="Wrap" Text="S5 Position" VerticalAlignment="Top"/>
+        <Slider x:Name="S5" HorizontalAlignment="Left" Margin="540,200,0,0" VerticalAlignment="Top" Width="180" Maximum="180" SmallChange="0" Value="90" IsSnapToTickEnabled="True" ValueChanged="S5_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="540,220,0,0" TextWrapping="Wrap" Text="{Binding ElementName=S5, Path=Value}" VerticalAlignment="Top"/>
+
+        <Button x:Name="preset1Send" Content="Send preset" HorizontalAlignment="Left" Margin="80,240,0,0" VerticalAlignment="Top" Click="preset1Send_Click"/>
+        <Button x:Name="preset2Send" Content="Send preset" HorizontalAlignment="Left" Margin="200,240,0,0" VerticalAlignment="Top" Click="preset2Send_Click"/>
+        <Button x:Name="preset3Send" Content="Send preset" HorizontalAlignment="Left" Margin="320,240,0,0" VerticalAlignment="Top" Click="preset3Send_Click"/>
+        <Button x:Name="currentSend" Content="Send preset" HorizontalAlignment="Left" Margin="440,240,0,0" VerticalAlignment="Top" Click="currentSend_Click"/>
+
+        <TextBox x:Name="textBox" HorizontalAlignment="Center" Height="25" Margin="0,475,0,0" TextWrapping="Wrap" Text="Arduino Messages" VerticalAlignment="Top" Width="640"/>
+
+        <TextBox x:Name="preset1" HorizontalAlignment="Left" Height="90" Margin="80,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" FontSize="8"/>
+        <TextBox x:Name="preset2" HorizontalAlignment="Left" Height="90" Margin="200,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" FontSize="8"/>
+        <TextBox x:Name="preset3" HorizontalAlignment="Left" Height="90" Margin="320,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" FontSize="8"/>
+        <TextBox x:Name="current" HorizontalAlignment="Left" Height="90" Margin="440,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" FontSize="8"/>
+
+        <Button x:Name="addButton" Content="Add waypoint" HorizontalAlignment="Left" Margin="559,270,0,0" VerticalAlignment="Top" Click="addButton_Click"/>
+        <Button x:Name="deleteButton" Content="Delete last point" HorizontalAlignment="Left" Margin="559,305,0,0" VerticalAlignment="Top" Click="deleteButton_Click"/>
+        <Button x:Name="saveButton" Content="Save preset" HorizontalAlignment="Left" Margin="559,340,0,0" VerticalAlignment="Top" Click="saveButton_Click"/>
+        <Button x:Name="connectButton" Content="connect" HorizontalAlignment="Left" Margin="680,28,0,0" VerticalAlignment="Top" Click="connectButton_Click"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="80,457,0,0" TextWrapping="Wrap" Text="Presets must have 6 waypoints in order to be sent the robot, press connect to link robot or it will throw error" VerticalAlignment="Top" Width="673"/>
+
+        <TextBox x:Name="directoryPath" HorizontalAlignment="Left" Height="29" Margin="80,410,0,0" TextWrapping="Wrap" Text="C:\Users\\Downloads" VerticalAlignment="Top" Width="427"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="83,382,0,0" TextWrapping="Wrap" Text="Enter the file directory where presets are stored" VerticalAlignment="Top" Width="255"/>
+        <Button x:Name="loadButton" Content="Load presets" HorizontalAlignment="Left" Margin="523,415,0,0" VerticalAlignment="Top" Click="loadButton_Click"/>
+        <TextBox x:Name="COM" HorizontalAlignment="Left" Height="22" Margin="680,53,0,0" TextWrapping="Wrap" Text="COM3" VerticalAlignment="Top" Width="46"/>
+        <Rectangle x:Name="indicator" HorizontalAlignment="Left" Height="10" Margin="656,33,0,0" Stroke="Black" VerticalAlignment="Top" Width="13" RenderTransformOrigin="0.492,0.444" Fill="White"/>
+        <Button x:Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="731,28,0,0" VerticalAlignment="Top" Click="disconnectButton_Click"/>
+        <Button x:Name="reset" Content="RESET" HorizontalAlignment="Left" Height="22" Margin="731,53,0,0" VerticalAlignment="Top" Width="59" Click="reset_Click"/>
+        <Slider x:Name="Waypointer" HorizontalAlignment="Left" Height="15" Margin="630,415,0,0" VerticalAlignment="Top" Width="123" LargeChange="0" IsSnapToTickEnabled="True" Maximum="12" SmallChange="0" Value="6"/>
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="637,435,0,0" TextWrapping="Wrap" Text="{Binding ElementName=Waypointer, Path=Value}" VerticalAlignment="Top" Width="13"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="637,394,0,0" TextWrapping="Wrap" Text="Number of waypoints" VerticalAlignment="Top" Width="125"/>
+
+
+    </Grid>
+</Window>
